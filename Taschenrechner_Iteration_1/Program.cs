@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Taschenrechner_Iteration_1
 {
@@ -18,12 +14,12 @@ namespace Taschenrechner_Iteration_1
             Console.Write("Bitte gib den zweiten Summanden ein: ");
             string zweiterSummand = Console.ReadLine();
 
-            // Wandel Text in Zahlen
-            int ersterSummandAlsZahl = Convert.ToInt32(ersterSummand);
-            int zweiterSummandAlsZahl = Convert.ToInt32(zweiterSummand);
+            // Wandel Text in Gleitkommazahlen
+            float ersterSummandAlsZahl = Convert.ToSingle(ersterSummand);
+            float zweiterSummandAlsZahl = Convert.ToSingle(zweiterSummand);
 
             // Berechnung ausführen
-            int summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
+            float summe = ersterSummandAlsZahl + zweiterSummandAlsZahl;
 
             // Ausgabe
             Console.WriteLine("Die Summe ist: {0}", summe);
