@@ -2,6 +2,22 @@ User Storys Taschenrechner
 
 User Story Vorlage : Als <Rolle/Anwendertyp> möchte ich <Ziel/Wunsch/Funktion>, um <Nutzen>
 
+TITEL:	Softwarestruktur
+STORY:	Als Entwickler möchte ich den Quellcode sauber strukturieren, um später einfach weitere Funktionalitäten hinzufügen zu können
+AKZEPTANZKRITERIEN:	
+		* Das Single Level of Absttaction Prinzip wird eingehalten oder eine Abweichung ist begründet und dokumentiert
+STATUS:
+		* Offen
+
+
+TITEL:	Subtrahieren
+STORY:	Als Benutzer möchte ich zwei Zahlen eingeben, um deren Differenz berechnen zu lassen
+AKZEPTANZKRITERIEN:	
+		* Gleitkommazahlen zwischen -10.0 und 100.0 können subtrahiert werden
+STATUS:
+		* Offen
+
+
 TITEL:	Addieren
 STORY:	Als Benutzer möchte ich zwei Zahlen eingeben, um deren Summe berechnen zu lassen
 AKZEPTANZKRITERIEN:	
