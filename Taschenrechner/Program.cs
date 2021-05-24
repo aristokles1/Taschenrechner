@@ -9,29 +9,30 @@ namespace Taschenrechner
         {
             // User Story "Addieren": Als Benutzer möchte ich zwei Zahlen eingeben, um deren Summe berechnen zu lassen.
 
-            // Eingabe der beiden Summanden
-            string ersterSummand = HoleSummanden("Bitte gib den ersten Summanden ein: ");
-            string zweiterSummand = HoleSummanden("Bitte gib den zweiten Summanden ein: ");
+            // Eingabe der beiden Zahlen
+            string ersteZahlAlsString = HoleBenutzereingabe("Bitte gib die erste Zahl ein: ");
+            string zweiteZahlAlsString = HoleBenutzereingabe("Bitte gib die zweite Zahl ein: ");
 
             // Wandel Text in Gleitkommazahlen
             // TODO: Auslagern in Methode, wenn Struktur umfangreicher geworden ist
-            double ersterSummandAlsZahl = Convert.ToDouble(ersterSummand);
-            double zweiterSummandAlsZahl = Convert.ToDouble(zweiterSummand);
+            double ersterZahl = Convert.ToDouble(ersteZahlAlsString);
+            double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
-            double summe = Addiere(ersterSummandAlsZahl, zweiterSummandAlsZahl);
+            double ergebnis = Addiere(ersterZahl, zweiteZahl);
 
             // Ausgabe
-            Console.WriteLine("Die Summe ist: {0}", summe);
-            WarteAufBenutzereingabe();
+            Console.WriteLine("Das Ergebnis ist: {0}", ergebnis);
+            Console.WriteLine();
+            HoleBenutzereingabe("Zum Beenden bitte - Return - drücken");
         }
 
-        static string HoleSummanden(string ausgabeText)
+        static string HoleBenutzereingabe(string ausgabeText)
         {
             Console.Write(ausgabeText);
-            string summand = Console.ReadLine();
+            string zahl = Console.ReadLine();
 
-            return summand;
+            return zahl;
         }
 
         static double Addiere(double ersterSummand, double zweiterSummand)
@@ -39,6 +40,13 @@ namespace Taschenrechner
             double summe = ersterSummand + zweiterSummand;
 
             return summe;
+        }
+
+        static double Subtrahiere(double minuend, double subtrahend)
+        {
+            double differenz = minuend - subtrahend;
+
+            return differenz;
         }
 
         static void WarteAufBenutzereingabe()
