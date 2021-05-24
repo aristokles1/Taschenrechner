@@ -7,7 +7,8 @@ STORY:	Als Entwickler möchte ich den Quellcode sauber strukturieren, um später e
 AKZEPTANZKRITERIEN:	
 		* Das Single Level of Abstraction Prinzip wird eingehalten oder eine Abweichung ist begründet und dokumentiert
 STATUS:
-		* Offen
+		* Umgesetzt
+		* Erledigt
 
 
 TITEL:	Subtrahieren
