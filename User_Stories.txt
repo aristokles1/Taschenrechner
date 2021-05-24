@@ -5,7 +5,7 @@ User Story Vorlage : Als <Rolle/Anwendertyp> möchte ich <Ziel/Wunsch/Funktion>, 
 TITEL:	Softwarestruktur
 STORY:	Als Entwickler möchte ich den Quellcode sauber strukturieren, um später einfach weitere Funktionalitäten hinzufügen zu können
 AKZEPTANZKRITERIEN:	
-		* Das Single Level of Absttaction Prinzip wird eingehalten oder eine Abweichung ist begründet und dokumentiert
+		* Das Single Level of Abstraction Prinzip wird eingehalten oder eine Abweichung ist begründet und dokumentiert
 STATUS:
 		* Offen
 
