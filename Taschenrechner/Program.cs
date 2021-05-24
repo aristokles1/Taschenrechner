@@ -9,20 +9,39 @@ namespace Taschenrechner
         {
             // User Story "Addieren": Als Benutzer möchte ich zwei Zahlen eingeben, um deren Summe berechnen zu lassen.
 
+            
+            double resultat = 0;
+
+
             // Eingabe der beiden Zahlen
             string ersteZahlAlsString = HoleBenutzereingabe("Bitte gib die erste Zahl ein: ");
             string zweiteZahlAlsString = HoleBenutzereingabe("Bitte gib die zweite Zahl ein: ");
-
+            // Eingabe der Rechenoperation
+            string rechenoperator = HoleBenutzereingabe("Bitte gib die Rechenoperation ein (+ oder -): ");
+            
             // Wandel Text in Gleitkommazahlen
             // TODO: Auslagern in Methode, wenn Struktur umfangreicher geworden ist
-            double ersterZahl = Convert.ToDouble(ersteZahlAlsString);
+            double ersteZahl = Convert.ToDouble(ersteZahlAlsString);
             double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
-            double ergebnis = Addiere(ersterZahl, zweiteZahl);
+            if (rechenoperator == "+")
+            {
+                resultat = Addiere(ersteZahl, zweiteZahl);
+                Console.WriteLine("Das Resultat ist: {0}", resultat);
+            }
+            else if (rechenoperator == "-")
+            {
+                resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                Console.WriteLine("Das Resultat ist: {0}", resultat);
+            }
+            else
+            {
+                Console.WriteLine("Du hast einen ungültigen Rechenoperator eingegeben!");
+            }
+
 
             // Ausgabe
-            Console.WriteLine("Das Ergebnis ist: {0}", ergebnis);
             Console.WriteLine();
             HoleBenutzereingabe("Zum Beenden bitte - Return - drücken");
         }
@@ -47,13 +66,6 @@ namespace Taschenrechner
             double differenz = minuend - subtrahend;
 
             return differenz;
-        }
-
-        static void WarteAufBenutzereingabe()
-        {
-            Console.WriteLine();
-            Console.Write("Zum Beenden bitte - Return - drücken");
-            Console.ReadLine();
         }
     }
 }
