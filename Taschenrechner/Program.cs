@@ -17,7 +17,7 @@ namespace Taschenrechner
             string ersteZahlAlsString = HoleBenutzereingabe("Bitte gib die erste Zahl ein: ");
             string zweiteZahlAlsString = HoleBenutzereingabe("Bitte gib die zweite Zahl ein: ");
             // Eingabe der Rechenoperation
-            string rechenoperator = HoleBenutzereingabe("Bitte gib die Rechenoperation ein (+ oder -): ");
+            string rechenoperator = HoleBenutzereingabe("Bitte gib die Rechenoperation ein (+ oder - oder * oder /): ");
             
             // Wandel Text in Gleitkommazahlen
             // TODO: Auslagern in Methode, wenn Struktur umfangreicher geworden ist
@@ -25,6 +25,7 @@ namespace Taschenrechner
             double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
+
             switch (rechenoperator)
             {
                 case "+":
@@ -38,8 +39,20 @@ namespace Taschenrechner
                     break;
 
                 case "/":
+                    if (zweiteZahl == 0)
+                    {
+                        Console.WriteLine("Division durch 0 ist nicht definiert, Kollege!");
+                        break;
+                    }
+                    else
+                    {
+                        resultat = Dividiere(ersteZahl, zweiteZahl);
+                        Console.WriteLine("Das Resultat ist: {0}", resultat);
+                        break;
+                    }
                 case "*":
-                    Console.WriteLine("Dieser Rechenoperator wird in Kürze unterstützt!");
+                    resultat = Multipliziere(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Das Resultat ist: {0}", resultat);
                     break;
 
                 default:  
@@ -74,6 +87,20 @@ namespace Taschenrechner
             double differenz = minuend - subtrahend;
 
             return differenz;
+        }
+
+        static double Multipliziere(double ersterFaktor, double zweiterFaktor)
+        {
+            double produkt = ersterFaktor * zweiterFaktor;
+
+            return produkt;
+        }
+
+        static double Dividiere(double dividend, double divisor)
+        { 
+            double quotient = dividend / divisor;
+
+            return quotient;           
         }
     }
 }
