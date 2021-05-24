@@ -25,19 +25,27 @@ namespace Taschenrechner
             double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
-            if (rechenoperator == "+")
+            switch (rechenoperator)
             {
-                resultat = Addiere(ersteZahl, zweiteZahl);
-                Console.WriteLine("Das Resultat ist: {0}", resultat);
-            }
-            else if (rechenoperator == "-")
-            {
-                resultat = Subtrahiere(ersteZahl, zweiteZahl);
-                Console.WriteLine("Das Resultat ist: {0}", resultat);
-            }
-            else
-            {
-                Console.WriteLine("Du hast einen ungültigen Rechenoperator eingegeben!");
+                case "+":
+                    resultat = Addiere(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Das Resultat ist: {0}", resultat);
+                    break;
+
+                case "-":
+                    resultat = Subtrahiere(ersteZahl, zweiteZahl);
+                    Console.WriteLine("Das Resultat ist: {0}", resultat);
+                    break;
+
+                case "/":
+                case "*":
+                    Console.WriteLine("Dieser Rechenoperator wird in Kürze unterstützt!");
+                    break;
+
+                default:  
+                    Console.WriteLine("Du hast einen ungültigen Rechenoperator eingegeben!");
+                    break;
+             
             }
 
 

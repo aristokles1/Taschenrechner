@@ -16,8 +16,9 @@ STORY:	Als Benutzer möchte ich zwei Zahlen eingeben, um deren Differenz berechne
 AKZEPTANZKRITERIEN:	
 		* Gleitkommazahlen zwischen -10.0 und 100.0 können subtrahiert werden
 STATUS:
-		* Offen
-
+		* Implementiert
+		* Getestet
+		* Erledigt
 
 TITEL:	Addieren
 STORY:	Als Benutzer möchte ich zwei Zahlen eingeben, um deren Summe berechnen zu lassen
