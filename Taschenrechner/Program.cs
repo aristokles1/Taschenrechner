@@ -25,10 +25,12 @@ namespace Taschenrechner
             double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
-            resultat = BerechnungDurchfuehren(ersteZahl, zweiteZahl, rechenoperator);
+            RechnerModel model = new RechnerModel();
+            resultat = model.Berechne(ersteZahl, zweiteZahl, rechenoperator);
 
-            // Ausgabe
+            // Ausgabe des Resultats
             ResultatAusgeben(resultat, zweiteZahl, rechenoperator);
+
             Console.WriteLine();
             HoleBenutzereingabe("Zum Beenden bitte - Return - drücken");
         }
@@ -40,45 +42,16 @@ namespace Taschenrechner
 
             return zahl;
         }
-        
-        static double BerechnungDurchfuehren(double Zahl1, double Zahl2, string operand)
-        {
-            double ergebnis = 0;
-
-            switch (operand)
-            {
-                case "+":
-                    ergebnis = Addiere(Zahl1, Zahl2);
-                    break;
-
-
-                case "-":
-                    ergebnis = Subtrahiere(Zahl1, Zahl2);
-                    break;
-
-                case "/":
-                    if (Zahl2 != 0)
-                    {
-                        ergebnis = Dividiere(Zahl1, Zahl2);
-                    }
-                    break;
-                case "*":
-                    ergebnis = Multipliziere(Zahl1, Zahl2);
-                    break;
-
-                default:
-                    break;
-
-            }
-                return ergebnis;
-        }                   
+                          
 
         static void ResultatAusgeben(double ergebnis, double Zahl2, string operand)
         {
+            // Division durch 0 anmerken
             if ((Zahl2 == 0) && (operand == "/"))
             {
                 Console.WriteLine("Division durch 0 ist nicht definiert, Kollege!");
             }
+            // Kein gültiger Rechenoperand anmerken
             else if ((operand != "+") && (operand != "-") && (operand != "*") && (operand != "/"))
             {
                 Console.WriteLine("Du hast keinen gültigen Rechenoperator eingegeben!");
@@ -87,35 +60,8 @@ namespace Taschenrechner
             {
             Console.WriteLine("Das Resultat ist: {0}", ergebnis);
             }
-
         }
 
-        static double Addiere(double ersterSummand, double zweiterSummand)
-        {
-            double summe = ersterSummand + zweiterSummand;
-
-            return summe;
-        }
-
-        static double Subtrahiere(double minuend, double subtrahend)
-        {
-            double differenz = minuend - subtrahend;
-
-            return differenz;
-        }
-
-        static double Multipliziere(double ersterFaktor, double zweiterFaktor)
-        {
-            double produkt = ersterFaktor * zweiterFaktor;
-
-            return produkt;
-        }
-
-        static double Dividiere(double dividend, double divisor)
-        { 
-            double quotient = dividend / divisor;
-
-            return quotient;           
-        }
+ 
     }
 }
