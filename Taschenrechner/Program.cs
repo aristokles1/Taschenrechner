@@ -4,7 +4,6 @@ namespace Taschenrechner
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             RechnerModel model = new RechnerModel();            
@@ -14,8 +13,5 @@ namespace Taschenrechner
             controller.Ausfuehren();
 
         }
-
-
- 
     }
 }
