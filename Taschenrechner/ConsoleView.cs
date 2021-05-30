@@ -14,13 +14,25 @@ namespace Taschenrechner
         {
             this.model = model;
         }
-        public string HoleBenutzereingabe(string ausgabeText)
-        {
-            Console.Write(ausgabeText);
-            string zahl = Console.ReadLine();
 
-            return zahl;
+        public string HoleZahlVomBenutzer()
+        {
+            Console.Write("Bitte gib eine Zahl für die Berechnung ein: ");
+            return Console.ReadLine();
         }
+
+        public string HoleOperatorVomBenutzer()
+        {
+            Console.Write("Bitte gib die auszuführende Operation ein (+, -, *, /): ");
+            return Console.ReadLine();
+        }
+
+        public string WarteAufEndeDurchBenutzer()
+        {
+            Console.Write("Zum Beenden bitte - Return - drücken!");
+            return Console.ReadLine();
+        }
+
         public void GibResultatAus(double Zahl2, string operand)
         {
             // Division durch 0 anmerken
@@ -35,7 +47,7 @@ namespace Taschenrechner
             }
             else
             {
-                Console.WriteLine("Das Resultat ist: {0}", model.Resultat);
+            Console.WriteLine("Das Resultat ist: {0}", model.Resultat);
             }
         }
     }
