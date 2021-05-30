@@ -36,15 +36,15 @@ namespace Taschenrechner
             return Console.ReadLine();
         }
 
-        public void GibResultatAus(double Zahl2, string operand)
+        public void GibResultatAus()
         {
             // Division durch 0 anmerken
-            if ((Zahl2 == 0) && (operand == "/"))
+            if ((model.ZweiteZahl == 0) && (model.Operation == "/"))
             {
                 Console.WriteLine("Division durch 0 ist nicht definiert, Kollege!");
             }
             // Kein gültiger Rechenoperand anmerken
-            else if ((operand != "+") && (operand != "-") && (operand != "*") && (operand != "/"))
+            else if ((model.Operation != "+") && (model.Operation != "-") && (model.Operation != "*") && (model.Operation != "/"))
             {
                 Console.WriteLine("Du hast keinen gültigen Rechenoperator eingegeben!");
             }

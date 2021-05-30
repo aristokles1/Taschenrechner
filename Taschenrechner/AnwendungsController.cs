@@ -24,7 +24,7 @@ namespace Taschenrechner
             model.Berechne(ersteZahl, zweiteZahl, rechenoperator);
 
             // Ausgabe
-            view.GibResultatAus(zweiteZahl, rechenoperator);
+            view.GibResultatAus();
             view.WarteAufEndeDurchBenutzer();
         }
     }

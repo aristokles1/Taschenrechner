@@ -9,14 +9,21 @@ namespace Taschenrechner
     class RechnerModel
     {
         public double Resultat { get; private set; }
+        public string Operation { get; private set; }
+        public double ZweiteZahl { get; private set; }
 
         public RechnerModel()
         {
             Resultat = 0;
+            Operation = "unbekannt";
+            ZweiteZahl = 0;
         }
 
         public void Berechne(double Zahl1, double Zahl2, string operation)
         {
+            this.Operation = operation;
+            this.ZweiteZahl = Zahl2;
+
             switch (operation)
             {
                 case "+":
