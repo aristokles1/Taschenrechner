@@ -7,7 +7,8 @@ namespace Taschenrechner
 
         static void Main(string[] args)
         {
-            ConsoleView view = new ConsoleView();
+            RechnerModel model = new RechnerModel();            
+            ConsoleView view = new ConsoleView(model);
 
             // Eingabe der beiden Zahlen
             string ersteZahlAlsString = view.HoleBenutzereingabe("Bitte gib die erste Zahl ein: ");
@@ -21,11 +22,10 @@ namespace Taschenrechner
             double zweiteZahl = Convert.ToDouble(zweiteZahlAlsString);
 
             // Berechnung ausführen
-            RechnerModel model = new RechnerModel();
             model.Berechne(ersteZahl, zweiteZahl, rechenoperator);
 
             // Ausgabe des Resultats
-            view.ResultatAusgeben(model.Resultat, zweiteZahl, rechenoperator);
+            view.GibResultatAus(zweiteZahl, rechenoperator);
 
             Console.WriteLine();
             view.HoleBenutzereingabe("Zum Beenden bitte - Return - drücken");

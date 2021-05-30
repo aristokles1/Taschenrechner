@@ -8,6 +8,12 @@ namespace Taschenrechner
 {
     class ConsoleView
     {
+        private RechnerModel model;
+
+        public ConsoleView(RechnerModel model)
+        {
+            this.model = model;
+        }
         public string HoleBenutzereingabe(string ausgabeText)
         {
             Console.Write(ausgabeText);
@@ -15,7 +21,7 @@ namespace Taschenrechner
 
             return zahl;
         }
-        public void ResultatAusgeben(double ergebnis, double Zahl2, string operand)
+        public void GibResultatAus(double Zahl2, string operand)
         {
             // Division durch 0 anmerken
             if ((Zahl2 == 0) && (operand == "/"))
@@ -29,7 +35,7 @@ namespace Taschenrechner
             }
             else
             {
-                Console.WriteLine("Das Resultat ist: {0}", ergebnis);
+                Console.WriteLine("Das Resultat ist: {0}", model.Resultat);
             }
         }
     }
