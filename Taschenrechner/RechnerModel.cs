@@ -9,8 +9,9 @@ namespace Taschenrechner
     class RechnerModel
     {
         public double Resultat { get; private set; }
-        public string Operation { get; private set; }
-        public double ZweiteZahl { get; private set; }
+        public string Operation { get; set; }
+        public double ErsteZahl { get; set; }
+        public double ZweiteZahl { get; set; }
 
         public RechnerModel()
         {
@@ -19,30 +20,28 @@ namespace Taschenrechner
             ZweiteZahl = 0;
         }
 
-        public void Berechne(double Zahl1, double Zahl2, string operation)
+        public void Berechne()
         {
-            this.Operation = operation;
-            this.ZweiteZahl = Zahl2;
 
-            switch (operation)
+            switch (Operation)
             {
                 case "+":
-                    Resultat = Addiere(Zahl1, Zahl2);
+                    Resultat = Addiere(ErsteZahl, ZweiteZahl);
                     break;
 
                 case "-":
-                    Resultat = Subtrahiere(Zahl1, Zahl2);
+                    Resultat = Subtrahiere(ErsteZahl, ZweiteZahl);
                     break;
 
                 case "/":
                     // Division durch 0 abfangen
-                    if (Zahl2 != 0)
+                    if (ZweiteZahl != 0)
                     {
-                        Resultat = Dividiere(Zahl1, Zahl2);
+                        Resultat = Dividiere(ErsteZahl, ZweiteZahl);
                     }
                     break;
                 case "*":
-                    Resultat = Multipliziere(Zahl1, Zahl2);
+                    Resultat = Multipliziere(ErsteZahl, ZweiteZahl);
                     break;
 
                 default:

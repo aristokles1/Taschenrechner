@@ -16,12 +16,10 @@ namespace Taschenrechner
         public void Ausfuehren()
         {
             // Eingabe
-            double ersteZahl = view.HoleZahlVomBenutzer();
-            string rechenoperator = view.HoleOperatorVomBenutzer();
-            double zweiteZahl = view.HoleZahlVomBenutzer();
+            view.HoleEingabeVomBenutzer();
 
             // Berechnung ausführen
-            model.Berechne(ersteZahl, zweiteZahl, rechenoperator);
+            model.Berechne();
 
             // Ausgabe
             view.GibResultatAus();
