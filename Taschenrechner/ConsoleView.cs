@@ -13,53 +13,92 @@ namespace Taschenrechner
         public ConsoleView(RechnerModel model)
         {
             this.model = model;
+            BenutzerWillBeenden = false;
         }
 
-        public void HoleEingabeVomBenutzer()
+        public bool BenutzerWillBeenden { get; private set; }
+
+        public void HoleEingabenFuerErsteBerechnungVomBenutzer()
         {
             model.ErsteZahl = HoleZahlVomBenutzer();
             model.Operation = HoleOperatorVomBenutzer();
             model.ZweiteZahl = HoleZahlVomBenutzer();
         }
 
+        public void HoleEingabenFuerFortlaufendeBerechnung()
+        {
+            string eingabe = HoleNaechsteAktionVomBenutzer();
+
+            if (eingabe.ToUpper() == "FERTIG")
+            {
+                BenutzerWillBeenden = true;
+            }
+            else
+            {
+                model.ErsteZahl = model.Resultat;
+                model.ZweiteZahl = Convert.ToDouble(eingabe);
+            }
+        }
+
+        private string HoleNaechsteAktionVomBenutzer()
+        {
+            Console.Write("Bitte gib eine weitere Zahl ein (FERTIG zum Beenden): ");
+            return Console.ReadLine();
+        }
+
         private double HoleZahlVomBenutzer()
         {
-            string zahl;
+            string eingabe;
+            double zahl;
             Console.Write("Bitte gib eine Zahl für die Berechnung ein: ");
-            zahl = Console.ReadLine();
+            eingabe = Console.ReadLine();
 
-            return Convert.ToDouble(zahl);
+            while (!double.TryParse(eingabe, out zahl))
+            {
+                Console.WriteLine("Du musst eine gültige Gleitkommazahl eingeben!");
+                Console.WriteLine("Neben den Ziffern 0-9 sind lediglich die folgenden Sonderzeichen erlaubt: ,.-");
+                Console.WriteLine("Dabei muss das - als erstes Zeichen vor einer Ziffer gesetzt werden.");
+                Console.WriteLine("Der . fungiert als Trennzeichen an Tausenderstellen.");
+                Console.WriteLine("Das , ist das Trennzeichen für die Nachkommastellen.");
+                Console.WriteLine("Alle drei Sonderzeichen sind optional!");
+                Console.WriteLine();
+                Console.Write("Bitte gib erneut eine Zahl für die Berechnung ein: ");
+                eingabe = Console.ReadLine();
+            }
+
+            return zahl;
         }
 
         private string HoleOperatorVomBenutzer()
         {
-            Console.Write("Bitte gib die auszuführende Operation ein (+, -, *, /): ");
-            return Console.ReadLine();
-        }
-
-        public string WarteAufEndeDurchBenutzer()
-        {
-            Console.Write("Zum Beenden bitte - Return - drücken!");
+            Console.Write("Bitte gib die auszuführende Operation ein (+, -, /, *): ");
             return Console.ReadLine();
         }
 
         public void GibResultatAus()
         {
-            // Division durch 0 anmerken
-            if ((model.ZweiteZahl == 0) && (model.Operation == "/"))
+            switch (model.Operation)
             {
-                Console.WriteLine("Division durch 0 ist nicht definiert, Kollege!");
+                case "+":
+                    Console.WriteLine("Die Summe ist: {0}", model.Resultat);
+                    break;
+
+                case "-":
+                    Console.WriteLine("Die Differenz ist: {0}", model.Resultat);
+                    break;
+
+                case "/":
+                    Console.WriteLine("Der Wert des Quotienten ist: {0}", model.Resultat);
+                    break;
+
+                case "*":
+                    Console.WriteLine("Das Produkt ist: {0}", model.Resultat);
+                    break;
+
+                default:
+                    Console.WriteLine("Du hast eine ungültige Auswahl der Operation getroffen.");
+                    break;
             }
-            // Kein gültiger Rechenoperand anmerken
-            else if ((model.Operation != "+") && (model.Operation != "-") && (model.Operation != "*") && (model.Operation != "/"))
-            {
-                Console.WriteLine("Du hast keinen gültigen Rechenoperator eingegeben!");
-            }
-            else
-            {
-            Console.WriteLine("Das Resultat ist: {0}", model.Resultat);
-            }
-            Console.WriteLine();
         }
     }
 }

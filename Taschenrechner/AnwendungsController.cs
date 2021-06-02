@@ -15,15 +15,17 @@ namespace Taschenrechner
 
         public void Ausfuehren()
         {
-            // Eingabe
-            view.HoleEingabeVomBenutzer();
-
-            // Berechnung ausführen
+            view.HoleEingabenFuerErsteBerechnungVomBenutzer();
             model.Berechne();
-
-            // Ausgabe
             view.GibResultatAus();
-            view.WarteAufEndeDurchBenutzer();
+            view.HoleEingabenFuerFortlaufendeBerechnung();
+
+            while (!view.BenutzerWillBeenden)
+            {
+                model.Berechne();
+                view.GibResultatAus();
+                view.HoleEingabenFuerFortlaufendeBerechnung();
+            }
         }
     }
 }

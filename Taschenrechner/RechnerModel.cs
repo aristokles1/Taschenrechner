@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Taschenrechner
+﻿namespace Taschenrechner
 {
-    class RechnerModel
+    public class RechnerModel
     {
         public double Resultat { get; private set; }
         public string Operation { get; set; }
@@ -17,12 +11,10 @@ namespace Taschenrechner
         {
             Resultat = 0;
             Operation = "unbekannt";
-            ZweiteZahl = 0;
         }
 
         public void Berechne()
         {
-
             switch (Operation)
             {
                 case "+":
@@ -34,17 +26,11 @@ namespace Taschenrechner
                     break;
 
                 case "/":
-                    // Division durch 0 abfangen
-                    if (ZweiteZahl != 0)
-                    {
-                        Resultat = Dividiere(ErsteZahl, ZweiteZahl);
-                    }
-                    break;
-                case "*":
-                    Resultat = Multipliziere(ErsteZahl, ZweiteZahl);
+                    Resultat = Dividiere(ErsteZahl, ZweiteZahl);
                     break;
 
-                default:
+                case "*":
+                    Resultat = Multipliziere(ErsteZahl, ZweiteZahl);
                     break;
             }
         }
@@ -56,25 +42,22 @@ namespace Taschenrechner
             return summe;
         }
 
-        private double Subtrahiere(double minuend, double subtrahend)
+        private double Subtrahiere(double minuend, double subtrahent)
         {
-            double differenz = minuend - subtrahend;
+            double differenz = minuend - subtrahent;
 
             return differenz;
         }
 
-        private double Multipliziere(double ersterFaktor, double zweiterFaktor)
-        {
-            double produkt = ersterFaktor * zweiterFaktor;
-
-            return produkt;
-        }
-
         private double Dividiere(double dividend, double divisor)
         {
-            double quotient = dividend / divisor;
-
-            return quotient;
+            return dividend / divisor;
         }
+
+        private double Multipliziere(double multiplikator, double multiplikand)
+        {
+            return multiplikator * multiplikand;
+        }
+
     }
 }

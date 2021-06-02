@@ -6,12 +6,11 @@ namespace Taschenrechner
     {
         static void Main(string[] args)
         {
-            RechnerModel model = new RechnerModel();            
+            RechnerModel model = new RechnerModel();
             ConsoleView view = new ConsoleView(model);
             AnwendungsController controller = new AnwendungsController(view, model);
 
             controller.Ausfuehren();
-
         }
     }
 }
